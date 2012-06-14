@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+    <title wicket:id="title">[[page title]]</title>
+
+    <meta name="Description" content="" />
+    <meta name="author" content="" />
+    <meta name="keywords" content="" />
+
+    <meta name="robots" content="all,follow" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/default.css" type="text/css" media="screen, projection, tv" />
+    <link rel="stylesheet" href="styles/print.css" type="text/css" media="print" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+</head>
+
+<body id="top">
+<div id="wrapper">
+
+    <div class="header">
+        <h1><span><a href="">Odea <span id="color">Bug</span> Tracker</a></span></h1>
+        <p id="about">un pequeño bugtracker</p>
+
+        <a href="#skip-menu" class="hidden">Skip menu</a> <!-- Skip menu -->
+        <div id="menu-box"><ul id="web"><li><a href="#">Contact</a></li> <li><a href="#">Gallery</a></li> <li><a href="#">About</a></li> <li><a class="active" id="first" href="">Home</a></li></ul></div>
+
+        <form class="searching" action="">
+            <fieldset>
+                <label></label>
+                <input type="text" name="as_q" class="search" onfocus="if(this.value==this.defaultValue)this.value=''"
+                       onblur="if(this.value=='')this.value=this.defaultValue" value="Searching&hellip;" />
+                <input class="hledat" type="submit" name="" value="Search" />
+            </fieldset>
+        </form>
+    </div> <!-- Header end -->
+
+    <hr class="noscreen" />
+
+    <div id="skip-menu"></div>
+    <div class="page">
+        <div class="col-r">
+            <div class="col-r-in">
+                <h2>El Ejemplo</h2>
+                <p>Este aplicativo tiene como finalidad demostrar las operaciones mas comunes y repetitivas que se me ocurrieron implementadas en <a href="http://wicket.apache.org/">apache wicket</a> , que es el framework que utilizaremos para la gran mayoria de los proyectos.<br/>
+                    Por ahora este ejemplo cuenta con :
+                    <br/>
+                    - Altas : crear un ticket <br/>
+                    - Bajas : borrar un ticket <br/>
+                    - Modificaciones : modificar un ticket <br/>
+                    - Listado : listar todos los tickets existentes <br/>
+                    - Busquedas : listar solo los tickets que contengan el string ingresado en el campo de search <br/><br/>
+
+                    A medida que se vayan agregando funcionalidades al ejemplo se iran agregando en este listado para un mejor seguimiento.
+                </p>
+
+                <hr class="noscreen" />
+                <br />
+
+                <div id="content">
+                    <wicket:child />
+                </div>
+
+
+                <hr class="noscreen" />
+                <br />
+
+
+            </div>
+        </div> <!-- Right column end -->
+
+        <hr class="noscreen" />
+
+        <div class="col-l">
+            <div class="col-l-in">
+                <h3>Menu</h3>
+                <ul class="menu">
+                    <li><a href="">Phasellus</a></li>
+                    <li><a href="">Etiam dictum libero</a></li>
+                    <li><a href="">Aliquam est purus</a></li>
+                    <li><a href="">Vivamus augue</a></li>
+                </ul>
+
+
+
+                <br />
+
+            </div>
+        </div> <!-- Left column end -->
+
+        <div class="cleaner">&nbsp;</div>
+
+    </div> <!-- Page end -->
+
+    <div id="footer">
+        <ul>
+            <li><a href="">Home</a>|</li>
+            <li><a href="#">About</a>|</li>
+            <li><a href="#">Gallery</a>|</li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+
+        <p><a href="#" onclick="print();" title="Javascript needed for a Print">Print</a> | <a href="#top">Top</a>&uarr;</p>
+    </div> <!-- Footer end -->
+
+</div> <!-- Wrapper end -->
+<br />
+</body>
+</html>

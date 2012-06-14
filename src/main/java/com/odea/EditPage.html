@@ -1,0 +1,25 @@
+<wicket:extend>
+
+    <a wicket:id="link" class="nav"><h3><span>Tickets</span></h3></a>
+    <div wicket:id="feedback" class="feedback">feedback</div>
+    <form wicket:id="form">
+        <ul>
+            <li>Type</li>
+            <li>
+                <select wicket:id="type" type="text" name="type"></select>
+            </li>
+
+            <li>Status</li>
+            <li wicket:id="status"></li>
+
+            <li>Título</li>
+            <li class="full"><input wicket:id="title" type="text" ></li>
+
+            <li>Descripción</li>
+            <li class="full"><textarea wicket:id="description" cols="76" rows="5" name="description"></textarea></li>
+
+            <li><input wicket:id="submit" value="Guardar" type="submit"></li>
+        </ul>
+
+    </form>
+</wicket:extend>
