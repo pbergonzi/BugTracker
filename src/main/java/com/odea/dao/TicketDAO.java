@@ -39,6 +39,16 @@ public class TicketDAO implements Serializable {
         return tickets;
     }
 
+    public List<Ticket> getTickets(String text){
+        List<Ticket> filteredList = new ArrayList<Ticket>();
+        for(Ticket t:tickets){
+            if(t.getTitle().contains(text) || t.getDescription().contains(text)){
+                filteredList.add(t);
+            }
+        }
+        return filteredList;
+    }
+    
     public void deleteTicket(long id){
         for(Ticket t : tickets){
             if(t.getId().equals(id)){

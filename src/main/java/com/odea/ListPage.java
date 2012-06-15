@@ -4,10 +4,15 @@ import com.odea.dao.TicketDAO;
 import com.odea.domain.Ticket;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.form.AjaxFormSubmitBehavior;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Button;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -17,7 +22,10 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,16 +37,40 @@ import java.util.Vector;
  * Time: 10:59
  */
 public class ListPage extends BasePage {
+    private static final Logger logger = LoggerFactory.getLogger(ListPage.class);
     private TicketDAO ticketDAO = TicketDAO.getInstance();
+    private String searchText;
 
     IModel<List<Ticket>> ticketsModel = new LoadableDetachableModel<List<Ticket>>() {
         @Override
         protected List<Ticket> load() {
-            return ticketDAO.getTickets();
+            if(searchText == null){
+                return ticketDAO.getTickets();
+            }else{
+                return ticketDAO.getTickets(searchText);
+            }
         }
     };
 
     public ListPage() {
+        Form<?> form = new Form<Void>("search");
+
+        TextField<String> searchTextField = new TextField<String>("searchText",new PropertyModel<String>(this,"searchText"));
+        AjaxButton submitSearch = new AjaxButton("submitSearch") {
+            @Override
+            protected void onSubmit(AjaxRequestTarget ajaxRequestTarget, Form<?> components) {
+                ajaxRequestTarget.add(getPage().get("ticketContainer"));
+            }
+
+            @Override
+            protected void onError(AjaxRequestTarget ajaxRequestTarget, Form<?> components) {
+                logger.info("Error mientras se ejecuta la Busqueda de tickets");
+            }
+        };
+
+        form.add(submitSearch);
+        form.add(searchTextField);
+        add(form);
         add(new FeedbackPanel("feedback"));
         add(new BookmarkablePageLink<EditPage>("link",EditPage.class));
         WebMarkupContainer ticketContainer = new WebMarkupContainer("ticketContainer");
@@ -81,4 +113,6 @@ public class ListPage extends BasePage {
     private void deleteTicket(long id){
         ticketDAO.deleteTicket(id);
     }
+
+
 }
