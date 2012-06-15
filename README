@@ -1,0 +1,3 @@
+para ejecutar BugTracker :
+mvn jetty:run
+abrir en un browser localhost:8080
