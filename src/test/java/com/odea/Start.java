@@ -14,7 +14,7 @@ public class Start {
 
         Server server = new Server();
         SocketConnector connector = new SocketConnector();
-
+        //connector.setHost("10.1.4.68");
         // Set some timeout options to make debugging easier.
         connector.setMaxIdleTime(timeout);
         connector.setSoLingerTime(-1);
