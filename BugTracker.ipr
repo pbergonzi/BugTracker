@@ -49,30 +49,14 @@
             <element id="module-output" name="BugTracker" />
           </element>
           <element id="directory" name="lib">
+            <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.2.1" />
             <element id="library" level="project" name="Maven: org.apache.wicket:wicket-core:1.5.7" />
             <element id="library" level="project" name="Maven: org.apache.wicket:wicket-util:1.5.7" />
             <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.6.1" />
             <element id="library" level="project" name="Maven: org.apache.wicket:wicket-request:1.5.7" />
             <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.6.2" />
             <element id="library" level="project" name="Maven: log4j:log4j:1.2.16" />
-            <element id="library" level="project" name="Maven: junit:junit:4.10" />
-            <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-core:1.1" />
-            <element id="file-copy" path="$MAVEN_REPOSITORY$/org/slf4j/slf4j-log4j12/1.6.2/slf4j-log4j12-1.6.2.jar" />
-            <element id="file-copy" path="$MAVEN_REPOSITORY$/org/apache/wicket/wicket-request/1.5.7/wicket-request-1.5.7.jar" />
-            <element id="file-copy" path="$MAVEN_REPOSITORY$/junit/junit/4.8.1/junit-4.8.1.jar" />
-            <element id="file-copy" path="$MAVEN_REPOSITORY$/org/eclipse/jetty/aggregate/jetty-all-server/7.5.0.v20110901/jetty-all-server-7.5.0.v20110901.jar" />
-            <element id="file-copy" path="$MAVEN_REPOSITORY$/org/apache/geronimo/specs/geronimo-jta_1.1_spec/1.1.1/geronimo-jta_1.1_spec-1.1.1.jar" />
-            <element id="file-copy" path="$MAVEN_REPOSITORY$/javax/mail/mail/1.4.1/mail-1.4.1.jar" />
-            <element id="file-copy" path="$MAVEN_REPOSITORY$/javax/activation/activation/1.1/activation-1.1.jar" />
-            <element id="file-copy" path="$MAVEN_REPOSITORY$/org/apache/geronimo/specs/geronimo-jaspic_1.0_spec/1.0/geronimo-jaspic_1.0_spec-1.0.jar" />
-            <element id="file-copy" path="$MAVEN_REPOSITORY$/org/apache/geronimo/specs/geronimo-annotation_1.0_spec/1.1.1/geronimo-annotation_1.0_spec-1.1.1.jar" />
-            <element id="file-copy" path="$MAVEN_REPOSITORY$/asm/asm-commons/3.1/asm-commons-3.1.jar" />
-            <element id="file-copy" path="$MAVEN_REPOSITORY$/asm/asm-tree/3.1/asm-tree-3.1.jar" />
-            <element id="file-copy" path="$MAVEN_REPOSITORY$/asm/asm/3.1/asm-3.1.jar" />
-            <element id="file-copy" path="$MAVEN_REPOSITORY$/log4j/log4j/1.2.16/log4j-1.2.16.jar" />
-            <element id="file-copy" path="$MAVEN_REPOSITORY$/org/apache/wicket/wicket-core/1.5.7/wicket-core-1.5.7.jar" />
-            <element id="file-copy" path="$MAVEN_REPOSITORY$/org/apache/wicket/wicket-util/1.5.7/wicket-util-1.5.7.jar" />
-            <element id="file-copy" path="$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.6.1/slf4j-api-1.6.1.jar" />
+            <element id="library" level="project" name="Maven: hsqldb:hsqldb:1.8.0.10" />
           </element>
         </element>
       </root>
@@ -137,17 +121,6 @@
     <option name="OTHER_OPTIONS" />
     <option name="HEAP_SIZE" />
     <option name="OPEN_IN_BROWSER" value="false" />
-  </component>
-  <component name="JikesSettings">
-    <option name="DEBUGGING_INFO" value="true" />
-    <option name="DEPRECATION" value="true" />
-    <option name="GENERATE_NO_WARNINGS" value="false" />
-    <option name="GENERATE_MAKE_FILE_DEPENDENCIES" value="false" />
-    <option name="DO_FULL_DEPENDENCE_CHECK" value="false" />
-    <option name="IS_INCREMENTAL_MODE" value="false" />
-    <option name="IS_EMACS_ERRORS_MODE" value="true" />
-    <option name="ADDITIONAL_OPTIONS_STRING" value="" />
-    <option name="MAXIMUM_HEAP_SIZE" value="128" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -325,6 +298,28 @@
         <root url="jar://$MAVEN_REPOSITORY$/asm/asm/3.1/asm-3.1-sources.jar!/" />
       </SOURCES>
     </library>
+    <library name="Maven: com.google.code.gson:gson:2.2.1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.2.1/gson-2.2.1.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.2.1/gson-2.2.1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.2.1/gson-2.2.1-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: hsqldb:hsqldb:1.8.0.10">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/hsqldb/hsqldb/1.8.0.10/hsqldb-1.8.0.10-sources.jar!/" />
+      </SOURCES>
+    </library>
     <library name="Maven: javax.activation:activation:1.1">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/javax/activation/activation/1.1/activation-1.1.jar!/" />
@@ -358,15 +353,15 @@
         <root url="jar://$MAVEN_REPOSITORY$/javax/servlet/servlet-api/2.5/servlet-api-2.5-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: junit:junit:4.10">
+    <library name="Maven: junit:junit:4.8.1">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/junit/junit/4.10/junit-4.10.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/junit/junit/4.8.1/junit-4.8.1.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/junit/junit/4.10/junit-4.10-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/junit/junit/4.8.1/junit-4.8.1-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/junit/junit/4.10/junit-4.10-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/junit/junit/4.8.1/junit-4.8.1-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: log4j:log4j:1.2.16">
@@ -457,17 +452,6 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jetty/aggregate/jetty-all-server/7.5.0.v20110901/jetty-all-server-7.5.0.v20110901-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.hamcrest:hamcrest-core:1.1">
-      <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1-sources.jar!/" />
-      </SOURCES>
-    </library>
     <library name="Maven: org.slf4j:slf4j-api:1.6.1">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.6.1/slf4j-api-1.6.1.jar!/" />
@@ -489,6 +473,13 @@
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-log4j12/1.6.2/slf4j-log4j12-1.6.2-sources.jar!/" />
       </SOURCES>
+    </library>
+    <library name="Odea-Components-1.0-SNAPSHOT">
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/../../Odea-Components/target/Odea-Components-1.0-SNAPSHOT.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
     </library>
   </component>
 </project>

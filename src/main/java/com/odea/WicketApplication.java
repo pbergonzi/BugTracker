@@ -27,5 +27,6 @@ public class WicketApplication extends WebApplication
 		super.init();
         getMarkupSettings().setDefaultMarkupEncoding("UTF-8");
         mountPage("list", ListPage.class);
+        mountPage("grid", Grid.class);
 	}
 }

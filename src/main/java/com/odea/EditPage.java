@@ -2,8 +2,8 @@ package com.odea;
 
 import com.odea.dao.TicketDAO;
 import com.odea.domain.Ticket;
-import com.odea.domain.Ticket.TicketType;
 import com.odea.domain.Ticket.TicketStatus;
+import com.odea.domain.Ticket.TicketType;
 import org.apache.wicket.markup.html.form.*;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
@@ -13,7 +13,6 @@ import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Date;
 
 /**
@@ -22,7 +21,7 @@ import java.util.Date;
  * Time: 10:59
  */
 public class EditPage extends BasePage {
-    private TicketDAO ticketDAO = TicketDAO.getInstance();
+    private transient TicketDAO ticketDAO = TicketDAO.getInstance();
     private IModel<Ticket> ticketModel;
     
     public EditPage(){

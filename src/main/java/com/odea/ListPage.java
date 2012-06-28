@@ -4,21 +4,16 @@ import com.odea.dao.TicketDAO;
 import com.odea.domain.Ticket;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.form.AjaxFormSubmitBehavior;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
-import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
-import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.Model;
@@ -27,9 +22,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 /**
  * User: pbergonzi
@@ -38,7 +31,7 @@ import java.util.Vector;
  */
 public class ListPage extends BasePage {
     private static final Logger logger = LoggerFactory.getLogger(ListPage.class);
-    private TicketDAO ticketDAO = TicketDAO.getInstance();
+    private transient TicketDAO ticketDAO = TicketDAO.getInstance();
     private String searchText;
 
     IModel<List<Ticket>> ticketsModel = new LoadableDetachableModel<List<Ticket>>() {
@@ -79,7 +72,7 @@ public class ListPage extends BasePage {
             @Override
             protected void populateItem(final ListItem<Ticket> components) {
                 Ticket ticket = components.getModelObject();
-                
+
                 if(ticket.getStatus() == Ticket.TicketStatus.CLOSED){
                     components.add(new AttributeModifier("class","article-closed"));        
                 }else if(ticket.getId() % 2 == 0){

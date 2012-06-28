@@ -1,74 +1,104 @@
 package com.odea.dao;
 
+import com.odea.dao.mock.HSQLDBInitializer;
 import com.odea.domain.Ticket;
 
-import java.io.Serializable;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Vector;
 
 /**
  * User: pbergonzi
  * Date: 14/06/12
  * Time: 16:23
  */
-public class TicketDAO implements Serializable {
+public class TicketDAO {
 
-    private static final TicketDAO instance = new TicketDAO();  
-    public List<Ticket> tickets;
-    
-    private TicketDAO(){
-        tickets = loadTickets();
+    private static final TicketDAO instance = new TicketDAO();
+    private static final HSQLDBInitializer hsqldb = new HSQLDBInitializer();
+
+    private TicketDAO() {
     }
-    
-    public static TicketDAO getInstance(){
+
+    public static TicketDAO getInstance() {
         return instance;
     }
 
-    private List<Ticket> loadTickets(){
-        List<Ticket> tickets = new Vector<Ticket>();
-        for(long i=0;i<5;i++){
-            tickets.add(new Ticket(i,"titulo " + i,"descripcion " + i, Ticket.TicketType.BUG, Ticket.TicketStatus.OPEN));
+    public List<Ticket> getTickets() {
+        List<Ticket> tickets = new ArrayList<Ticket>();
+        try {
+            Statement stmt = hsqldb.getConnection().createStatement();
+            ResultSet rs = stmt.executeQuery("select * from Tickets order by id");
+
+            while (rs.next()) {
+                tickets.add(this.mapTicket(rs));
+            }
+
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
         }
         return tickets;
     }
-    
-    public List<Ticket> getTickets(){
-        Collections.sort(tickets);
+
+    private Ticket mapTicket(ResultSet rs) throws Exception {
+        String type = rs.getString(4);
+        String status = rs.getString(5);
+        return new Ticket(rs.getLong(1), rs.getString(2), rs.getString(3), Ticket.TicketType.valueOf(type), Ticket.TicketStatus.valueOf(status));
+    }
+
+
+    public List<Ticket> getTickets(String text) {
+        List<Ticket> tickets = new ArrayList<Ticket>();
+        try {
+            Statement stmt = hsqldb.getConnection().createStatement();
+            ResultSet rs = stmt.executeQuery("select * from Tickets where title like '%" + text + "%' order by id");
+
+            while (rs.next()) {
+                tickets.add(this.mapTicket(rs));
+            }
+
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
         return tickets;
     }
 
-    public List<Ticket> getTickets(String text){
-        List<Ticket> filteredList = new ArrayList<Ticket>();
-        for(Ticket t:tickets){
-            if(t.getTitle().contains(text) || t.getDescription().contains(text)){
-                filteredList.add(t);
-            }
-        }
-        return filteredList;
-    }
-    
-    public void deleteTicket(long id){
-        for(Ticket t : tickets){
-            if(t.getId().equals(id)){
-                tickets.remove(t);
-                break;
-            }
+    public void deleteTicket(long id) {
+        try {
+            Statement stmt = hsqldb.getConnection().createStatement();
+            stmt.execute("delete from Tickets where id = " + id);
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
         }
     }
 
-    public Ticket getTicket(long id){
-        for(Ticket t : tickets){
-            if(t.getId().equals(id)){
-                return t;
-            }
+    public Ticket getTicket(long id) {
+        try {
+            Statement stmt = hsqldb.getConnection().createStatement();
+            ResultSet rs = stmt.executeQuery("select * from Tickets where id = " + id);
+            rs.next();
+            return this.mapTicket(rs);
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
         }
-        return null;
     }
 
-    public void insertOrUpdate(Ticket t){
+    public void insertOrUpdate(Ticket t) {
         deleteTicket(t.getId());
-        tickets.add(t);
+        try {
+            String insert = "INSERT INTO Tickets VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement pstmt = hsqldb.getConnection().prepareStatement(insert);
+            pstmt.setLong(1, t.getId());
+            pstmt.setString(2, t.getTitle());
+            pstmt.setString(3, t.getDescription());
+            pstmt.setString(4, t.getType().name());
+            pstmt.setString(5, t.getStatus().name());
+            pstmt.execute();
+            pstmt.close();
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
     }
 }
